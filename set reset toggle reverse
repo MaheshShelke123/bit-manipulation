@@ -39,39 +39,49 @@ int main(){
     printf("Enter the integer number : ");
     int num;
     scanf("%d",&num);
-    printf("The binary equivalent of the cnumber is : ",intToBinary(num));
+    printf("The binary equivalent of this number is : ");
+    intToBinary(num);
+    printf("\n");
     int choice;
     printf("\nEnter the number to your choice among following.... ");
     printf("\n1) Set a particular bit: ");
     printf("\n2) Reset a particular bit: ");
     printf("\n3) Toggle a particular bit: ");
     printf("\n4) Reverse the binary number: ");
-    printf("\nEnter your choice here : ");
+    printf("\n\nEnter your choice here : ");
     scanf("%d",&choice);
     switch(choice){
         case 1:
-        printf("enter the index of bit that you want to set : ");
+        printf("\nenter the index of bit that you want to set : ");
         int index1;
         scanf("%d",&index1);
         printf("The number after setting the particular bit is : %d",setBit(num,index1));
+        printf("\nThe binary equivalent of this number is : ");
+    intToBinary(setBit(num,index1));
         break;
         
         case 2:
-        printf(" Enter the index of bit which you want to reset : ");
+        printf("\nEnter the index of bit which you want to reset : ");
         int index2;
         scanf("%d",&index2);
         printf("The number after resetting the particular bit is : %d",resetBit(num,index2));
+    printf("\nThe binary equivalent of this number is : ");
+    intToBinary(resetBit(num,index2));
         break;
         
         case 3:
-        printf("Enter the index of bit which you want to Toggle : ");
+        printf("\nEnter the index of bit which you want to Toggle : ");
         int index3;
         scanf("%d",&index3);
         printf("The number after resetting the particular bit is : %d",toggleBit(num,index3));
+        printf("\nThe binary equivalent of this number is : ");
+        intToBinary(toggleBit(num,index3));
         break;
         
         case 4:
-       printf("The number after reversing its binary representation: %d",reverse(num));
+       printf("\nThe number after reversing its binary representation: %d",reverse(num));
+       printf("\nThe binary equivalent of this number is : ");
+        intToBinary(reverse(num));
     }
     
     
