@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
 #define ARR_SIZE 201
 
@@ -9,20 +11,28 @@ int charcmp(char a, char b);
 // function prototype to check the substring 
 void checkSubstring(char string[], int size);
 
+
+// function prototype to lower the character string 
+void Lowercase(char *arr,int size); 
+
+
 int main() {
     char string[ARR_SIZE] = "xjfuelkxvjjwfqyxcotxmdgmxxdgabababaccwnivvqjjsyvmzeovbomfabababachosfdfpszmuqomtgqxwfwjabababaczgauhylcizmmqpevofkhdepbkqmxihszllcjquqakcnesiuxuxcnrqfwiinvjwxcplterwbetvrzotaforwznutolluxknzyotlcwzpwcb";
 
     checkSubstring(string, ARR_SIZE);
     return 0;
 }
-
+// function to compare characters 
 int charcmp(char a, char b) {
     return a - b;
 }
 
+//function to check the substring 
 void checkSubstring(char string[], int size) {
     int checkC;
     int flag = 0;
+Lowercase(string,ARR_SIZE);
+
 
     for (int i = 0; i < size - 1; i++) {
         checkC = charcmp(string[i], 'c');
@@ -58,4 +68,11 @@ void checkSubstring(char string[], int size) {
     if (flag == 0) {
         printf("\nError");
     }
+}
+
+// function to lowercase the array characters
+void Lowercase(char *arr,int size){
+for (int i=0;i<size;i++){
+  arr[i] = tolower(arr[i]);
+}
 }
