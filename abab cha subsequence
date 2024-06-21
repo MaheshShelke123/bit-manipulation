@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <ctype.h>
 
 #define ARR_SIZE 201
+
+// string to check abababc
 
 // Function prototype to compare
 int charcmp(char a, char b);
@@ -11,17 +11,16 @@ int charcmp(char a, char b);
 // function prototype to check the substring 
 void checkSubstring(char string[], int size);
 
-
 // function prototype to lower the character string 
-void Lowercase(char *arr,int size); 
-
+void Lowercase(char *arr, int size); 
 
 int main() {
-    char string[ARR_SIZE] = "xjfuelkxvjjwfqyxcotxmdgmxxdgabababaccwnivvqjjsyvmzeovbomfabababachosfdfpszmuqomtgqxwfwjabababaczgauhylcizmmqpevofkhdepbkqmxihszllcjquqakcnesiuxuxcnrqfwiinvjwxcplterwbetvrzotaforwznutolluxknzyotlcwzpwcb";
+    char string[ARR_SIZE] = "abababcknaabababckksababacfdsabababcabababcrfnababababababababcabbbbbbcccccc";
 
     checkSubstring(string, ARR_SIZE);
     return 0;
 }
+
 // function to compare characters 
 int charcmp(char a, char b) {
     return a - b;
@@ -31,21 +30,20 @@ int charcmp(char a, char b) {
 void checkSubstring(char string[], int size) {
     int checkC;
     int flag = 0;
-Lowercase(string,ARR_SIZE);
-
+    //Lowercase(string, ARR_SIZE);
 
     for (int i = 0; i < size - 1; i++) {
         checkC = charcmp(string[i], 'c');
-        if (i >= 7 && checkC == 0) {
-            // Check for the substring "abababac"
-            if (charcmp(string[i-1], 'a') == 0 &&
-                charcmp(string[i-2], 'b') == 0 &&
-                charcmp(string[i-3], 'a') == 0 &&
-                charcmp(string[i-4], 'b') == 0 &&
-                charcmp(string[i-5], 'a') == 0 &&
-                charcmp(string[i-6], 'b') == 0 &&
-                charcmp(string[i-7], 'a') == 0) {
-                flag = 1;  // Flag to check whether the string contains the substring
+        if (i >= 6 && checkC == 0) {
+            // Check for the substring "abababc"
+            if (charcmp(string[i-1], 'b') == 0 &&
+                charcmp(string[i-2], 'a') == 0 &&
+                charcmp(string[i-3], 'b') == 0 &&
+                charcmp(string[i-4], 'a') == 0 &&
+                charcmp(string[i-5], 'b') == 0 &&
+                charcmp(string[i-6], 'a') == 0) {
+                
+                flag = 1;  // Flag to check whether if the string contains the substring flag sets to one
 
                 // Ensure we don't go out of bounds
                 if (i + 3 < size - 1) {
@@ -65,14 +63,14 @@ Lowercase(string,ARR_SIZE);
         }
     }
 
-    if (flag == 0) {
+    if (flag == 0) { //  here the flag means we dont have the substring in the input sequence 
         printf("\nError");
     }
 }
 
 // function to lowercase the array characters
-void Lowercase(char *arr,int size){
-for (int i=0;i<size;i++){
-  arr[i] = tolower(arr[i]);
-}
+void Lowercase(char *arr, int size) {
+    for (int i = 0; i < size; i++) {
+        arr[i] = tolower(arr[i]);
+    }
 }
