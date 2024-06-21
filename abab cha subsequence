@@ -1,24 +1,61 @@
-
-//abababac
 #include <stdio.h>
-int charcmp(char a,char b){
-    return a-b;
-}
-int main()
-{   int checkC;
-    int pos = 0;
-  char string[201] = "xjcuelkxvjjwfqyxcotxmdgmcxdgabababacweivvqjjsyvmzeovbomfabababachosfdfpszmuqcmtgqxwfwjabababaczgauhylcizmmqpevofkhdepbkqmxihszllcjquqakcnesiuxuxcnrqfwiinvjwxcplterwbetvrzotaforwznutolluxknzyotlcwzpwcb";
-string[201] ='\0';
-for(int i=0;i<200;i++){
-   checkC = charcmp(string[i],'c');
-   if(i >= 7 && checkC == 0){ 
-       // because the length of the substring is 8
-       if( charcmp(string[i-1],'a') == 0 && charcmp(string[i-2],'b') == 0 && charcmp(string[i-3],'a') == 0 && charcmp(string[i-4],'b') == 0 && charcmp(string[i-5],'a') == 0 && charcmp(string[i-6],'b') == 0 && charcmp(string[i-7],'a') == 0){
-           printf("%c",string[i+3]);
-       }
-   }
-}
+#include <stdlib.h>
 
+#define ARR_SIZE 201
 
+// Function prototype to compare
+int charcmp(char a, char b);
+
+// function prototype to check the substring 
+void checkSubstring(char string[], int size);
+
+int main() {
+    char string[ARR_SIZE] = "xjfuelkxvjjwfqyxcotxmdgmxxdgabababaccwnivvqjjsyvmzeovbomfabababachosfdfpszmuqomtgqxwfwjabababaczgauhylcizmmqpevofkhdepbkqmxihszllcjquqakcnesiuxuxcnrqfwiinvjwxcplterwbetvrzotaforwznutolluxknzyotlcwzpwcb";
+
+    checkSubstring(string, ARR_SIZE);
     return 0;
+}
+
+int charcmp(char a, char b) {
+    return a - b;
+}
+
+void checkSubstring(char string[], int size) {
+    int checkC;
+    int flag = 0;
+
+    for (int i = 0; i < size - 1; i++) {
+        checkC = charcmp(string[i], 'c');
+        if (i >= 7 && checkC == 0) {
+            // Check for the substring "abababac"
+            if (charcmp(string[i-1], 'a') == 0 &&
+                charcmp(string[i-2], 'b') == 0 &&
+                charcmp(string[i-3], 'a') == 0 &&
+                charcmp(string[i-4], 'b') == 0 &&
+                charcmp(string[i-5], 'a') == 0 &&
+                charcmp(string[i-6], 'b') == 0 &&
+                charcmp(string[i-7], 'a') == 0) {
+                flag = 1;  // Flag to check whether the string contains the substring
+
+                // Ensure we don't go out of bounds
+                if (i + 3 < size - 1) {
+                    if (charcmp(string[i+3], 'n') == 0) {
+                        printf("\nName");
+                    } else if (charcmp(string[i+3], 's') == 0) {
+                        printf("\nSky");
+                    } else if (charcmp(string[i+3], 'a') == 0) {
+                        printf("\nAge");
+                    } else {
+                        printf("\nError");
+                    }
+                } else {
+                    printf("\nError");
+                }
+            }
+        }
+    }
+
+    if (flag == 0) {
+        printf("\nError");
+    }
 }
